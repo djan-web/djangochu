@@ -1,0 +1,106 @@
+{% load static %}
+<head>
+	<title>Formulaire</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #7abecc !important;
+		}
+		.user_card {
+			width: 300px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #74cfbf;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+
+		}
+	</style>
+	<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+        <img src="{% static 'img/un.png'%}" height="48" alt="CoolBrand">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="{% url 'acceuil'%}" class="nav-item nav-link active">Accueil</a>
+            <a href="{% url 'patient analyse'%}" class="nav-item nav-link">Patient analyse</a>
+            <a href="{% url 'tableau de bord'%}" class="nav-item nav-link">Tableau de bord</a>
+           <!-- <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> !-->
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a href="{% url 'acces'%}" class="nav-item nav-link">Bienvenue {{user}}, Déconnecté</a>
+        </div>
+    </div>
+</nav>
+
+</head>
+	<div class="container">
+				<div class=" d-flex justify-content-center">
+					<h3> Patient Formulaire </h3>
+				</div>
+						<form action="" method="post">
+							<br>
+							{% csrf_token %}
+
+                     			 <div class="row mb-3">
+									<div class="col">
+									  	<label> Entrez IP </label>
+										<input type="text" class="form-control" id={{form.codebr}}>
+										<label> Entrez nom de patient </label>
+										<input class="form-control" id={{form.Nom}}>
+									</div>
+									<div class="col">
+										<div>
+										<label> Entrez prénom de patient </label>
+									  	<input type="text" class= form-control id={{form.Prenom}}>
+										<label> Services </label>
+										<select class= "form-control form-control" value={{form.services}}></select>
+										</div>
+									</div>
+
+								</div>
+								<div>
+									<div>
+										<label> Type d'analyse </label>
+											<select class="custom-select" value={{form.Type_analyse}}></select>
+									</div>
+									<div>
+											<label> Status </label>
+											<select class="form-control form-control" value={{form.Status}}></select>
+									</div>
+								</div>
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn submit_btn" type="submit" value="SAUVGARDER">
+				   			</div>
+						</form>
+			</div>
+</div>
